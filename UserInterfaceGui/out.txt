@@ -1,0 +1,81 @@
+============================= test session starts =============================
+platform win32 -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+rootdir: C:\Users\RMartin10\PycharmProjects\Rasheedattempt
+plugins: session2file-0.1.11
+collected 2 items
+
+..\Tests\test_serialinterface.py F.                                      [100%]
+
+================================== FAILURES ===================================
+________________ Test_Serial_Interface.test_adc_user_interface ________________
+
+self = <test_serialinterface.Test_Serial_Interface object at 0x00000198D0B55D80>
+fixture_putty_serial = <Framework.HIT_Putty_Interface.HIT_Interface object at 0x00000198D0B56DA0>
+
+    def test_adc_user_interface(self, fixture_putty_serial):
+        """
+        This is a test to test the adc component of the hard integration testing
+        :param fixture_putty_remote_psu_reset:
+        :param fixture_putty_serial:
+        :return:
+        """
+        loops = 20
+        delay_per_cycle = 20
+        fixture_putty_serial.adc_user_interface(loops, delay_per_cycle)
+    
+>       assert find_path('adc.csv').loc[3]['R1'] == 3
+E       assert 2 == 3
+
+..\Tests\test_serialinterface.py:38: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+You successfully connected to the COM Port
+---------------------------- Captured stdout call -----------------------------
+
+    R2  R3A  R3B  R1R  R2R  R1S  IaRaw  IbRaw  OffsetRaw  Vcoil  VprQ8  InRef  \
+R1                                                                              
+2    2    1    2    1    2    2   2047   2047       2049   3629   5890   1513   
+1    3    1    2    2    1    1   2050   2046       2047   3629   5890   1513   
+2    3    2    3    1    3    2   2047   2046       2047   3630   5889   1513   
+2    2    3    2    1    3    1   2047   2045       2048   3630   5892   1511   
+2    1    1    3    2    3    1   2050   2045       2049   3630   5890   1513   
+1    2    1    2    2    1    1   2048   2046       2049   3630   5890   1512   
+1    3    1    2    1    2    2   2050   2046       2048   3629   5890   1514   
+1    3    2    2    1    2    2   2049   2049       2048   3629   5890   1512   
+1    2    3    1    2    2    2   2049   2045       2047   3629   5889   1513   
+2    2    2    3    1    3    2   2049   2046       2047   3628   5889   1511   
+1    1    2    3    2    2    1   2049   2045       2049   3627   5889   1512   
+1    1    2    2    2    1    3   2050   2046       2049   3630   5890   1513   
+1    1    1    2    2    3    1   2047   2045       2048   3629   5892   1512   
+2    2    3    2    1    2    1   2047   2044       2047   3629   5890   1517   
+1    2    2    1    2    2    1   2047   2047       2049   3629   5892   1513   
+2    2    2    2    2    2    2   2049   2045       2048   3629   5889   1513   
+1    4    2    3    1    2    1   2049   2046       2049   3629   5887   1513   
+2    0    2    2    1    1    1   2049   2046       2048   3630   5892   1514   
+2    1    1    1    2    2    2   2049   2046       2049   3630   5889   1513   
+1    2    0    2    2    2    1   2047   2046       2047   3630   5876   1511   
+
+    InTmp  ThMem  VrlQ8  
+R1                       
+2     930    110   5939  
+1     930    111   5941  
+2     929    112   5939  
+2     930    110   5935  
+2     929    111   5935  
+1     929    111   5941  
+1     930    110   5937  
+1     930    111   5937  
+1     929    111   5942  
+2     930    110   5942  
+1     929    108   5935  
+1     929    110   5937  
+1     929    111   5935  
+2     930    109   5937  
+1     929    109   5942  
+2     930    110   5937  
+1     931    110   5935  
+2     930    111   5935  
+2     929    109   5935  
+1     930    110   5935  
+=========================== short test summary info ===========================
+FAILED ..\Tests\test_serialinterface.py::Test_Serial_Interface::test_adc_user_interface
+======================== 1 failed, 1 passed in 30.85s =========================
